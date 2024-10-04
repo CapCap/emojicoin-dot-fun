@@ -4,15 +4,10 @@ if (process.env.NODE_ENV !== "test") {
 
 import { LIMIT, ORDER_BY } from "../../../queries";
 import { type AnyNumberString } from "../../../types";
-import { TableName } from "../../types/json-types";
+import { type DatabaseJsonType, TableName } from "../../types/json-types";
 import { postgrest, toQueryArray } from "../client";
 import { queryHelper, queryHelperSingle } from "../utils";
-import {
-  toChatEventModel,
-  toMarketStateModel,
-  toPeriodicStateEventModel,
-  toSwapEventModel,
-} from "../../types";
+import { toChatEventModel, toMarketStateModel, toSwapEventModel } from "../../types";
 import { type PeriodicStateEventQueryArgs, type MarketStateQueryArgs } from "../../types/common";
 import { type SymbolEmoji } from "../../../emoji_data/types";
 
@@ -68,8 +63,10 @@ const selectMarketState = ({ searchEmojis }: { searchEmojis: SymbolEmoji[] }) =>
 
 export const fetchSwapEvents = queryHelper(selectSwapsByMarketID, toSwapEventModel);
 export const fetchChatEvents = queryHelper(selectChatsByMarketID, toChatEventModel);
+// Note the lack of a conversion function here- this is because we must cache the data
+// with no bigints, so we store it as the raw database JSON data.
 export const fetchPeriodicEventsSince = queryHelper(
   selectPeriodicEventsSince,
-  toPeriodicStateEventModel
+  (r: DatabaseJsonType["periodic_state_events"]) => r
 );
 export const fetchMarketState = queryHelperSingle(selectMarketState, toMarketStateModel);
