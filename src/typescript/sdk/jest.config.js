@@ -10,7 +10,7 @@ module.exports = {
     customExportConditions: ["react-server", "node", "node-addons"],
   },
   coveragePathIgnorePatterns: [],
-  testPathIgnorePatterns: ["dist/*"],
+  testPathIgnorePatterns: [],
   collectCoverage: false,
   coverageThreshold: {
     global: {
@@ -20,7 +20,6 @@ module.exports = {
       statements: 55,
     },
   },
-  maxWorkers: 4,
   globalSetup: process.env.NO_TEST_SETUP !== "true" ? "./tests/pre-test.ts" : null,
   globalTeardown: process.env.NO_TEST_SETUP !== "true" ? "./tests/post-test.ts" : null,
 };
