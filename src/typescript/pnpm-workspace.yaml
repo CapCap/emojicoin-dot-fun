@@ -2,7 +2,4 @@
 packages:
 - 'sdk'
 - 'frontend'
-- 'with-jest-app'
-- 'with-jest-app-2'
-- 'asdf'
 ...

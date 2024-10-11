@@ -50,9 +50,6 @@
   "version": "0.0.0",
   "workspaces": [
     "sdk",
-    "frontend",
-    "with-jest-app",
-    "with-jest-app-2",
-    "asdf"
+    "frontend"
   ]
 }
