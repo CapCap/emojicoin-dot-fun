@@ -9,10 +9,7 @@ module.exports = {
   testEnvironmentOptions: {
     customExportConditions: ["react-server", "node", "node-addons"],
   },
-  coveragePathIgnorePatterns: [],
-  testPathIgnorePatterns: [],
   collectCoverage: false,
-  forceExit: true,
   coverageThreshold: {
     global: {
       branches: 50,
