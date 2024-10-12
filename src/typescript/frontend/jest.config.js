@@ -1,3 +1,4 @@
+// cspell:word mizuwallet
 const nextJest = require("next/jest");
 
 const createJestConfig = nextJest({
@@ -7,14 +8,7 @@ const createJestConfig = nextJest({
 /** @type {import("ts-jest").JestConfigWithTsJest} */
 const customJestConfig = {
   testPathIgnorePatterns: ["tests/playwright", "./dist"],
-  // preset: "ts-jest",
   verbose: true,
-  // preset: "ts-jest/presets/default-esm",
-  // globals: {
-  //   "ts-jest": {
-  //     useESM: true,
-  //   },
-  // },
   globals: {
     fetch: global.fetch,
     WebSocket: global.WebSocket,
@@ -28,7 +22,7 @@ const customJestConfig = {
     customExportConditions: ["node", "node-addons"],
   },
   moduleDirectories: ['node_modules', '.pnpm', 'src'],
-  setupFilesAfterEnv: ["<rootDir>/pre-test.js"],
+  setupFilesAfterEnv: ["<rootDir>/tests/jest/pre-test.js"],
   testPathIgnorePatterns: ["tests/playwright", "./dist", '<rootDir>/node_modules/', '<rootDir>/.next/'],
   transformIgnorePatterns: [
     '/node_modules/(?!(@mizuwallet-sdk|@aptos-labs|graphql-request))',
