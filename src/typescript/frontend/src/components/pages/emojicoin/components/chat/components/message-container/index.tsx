@@ -55,8 +55,8 @@ const MessageContainer: React.FC<MessageContainerProps> = ({
         <StyledMessageWrapper layout fromAnotherUser={fromAnotherUser}>
           <StyledMessageInner>
             <Emoji
-              className="pt-[1ch] p-[0.25ch] text-xl tracking-widest"
-              style={{ wordBreak: "break-word" }}
+              className="pt-[1ch] p-[0.25ch] text-xl leading-none"
+              style={{ wordBreak: "break-all" }}
               emojis={message.text}
             />
             <Arrow />
